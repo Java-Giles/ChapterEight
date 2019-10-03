@@ -21,7 +21,8 @@ public class TwelveInts {
 
         for(int j = 0; j < myArray.length; ++j)
             System.out.println(myArray[j]);
-        for(int k = 0;)
+        for(int k = 11; k >= 0; --k)
+            System.out.println(myArray[k]);
 
     }
 }
