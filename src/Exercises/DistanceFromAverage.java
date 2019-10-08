@@ -2,64 +2,44 @@ package Exercises;
 
 import java.util.Scanner;
 
+import static java.lang.Math.abs;
+
 public class DistanceFromAverage {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
 
-        double userEntry = 0.0;
-        int count = 1;
+        double userEntry = 0;
+        int count = 0;
         double total = 0.0;
         double average = 0;
-        double high = 0;
-        double highDistance = 0;
-        double low = 999999;
-        double lowDistance = 0;
-        double distanceNum;
+        double distance;
         double[] twentyDoubles = new double[20];
+        boolean quit = true;
 
         Scanner input = new Scanner(System.in);
 
-        while(userEntry != 99999) {
-                System.out.println("Enter double number " + (count) +  ":");
-                userEntry = input.nextDouble();
-
-            if(userEntry != 99999){
-                count++;
+        while (quit) {
+            System.out.println("Please enter a number>>>> ");
+            userEntry = input.nextDouble();
+            if (count == 20)
+                quit = false;
+            else if (userEntry == 99999)
+                quit = false;
+            else {
                 twentyDoubles[count] = userEntry;
                 total = total + userEntry;
-                if(userEntry > high){
-                    high = userEntry;
-                }
-                else if(userEntry < low){
-                    low = userEntry;
-                }
+                count++;
             }
+        }
+        average = total/count;
 
-            else{
-                System.out.println("Ending code...");
-            }
-            average = total / count;
-            highDistance = high - average;
-            lowDistance = (low - (low * 2) + average);
-
+        for(int i = 0; i < count; i++){
+            distance = twentyDoubles[i] - average;
+            System.out.println("The average was " + average + " \nUser entry was " + twentyDoubles[i] +
+            "\nThe distance was " + abs(distance));
 
         }
-        System.out.println("Your entered values are:");
-        for(int i = 2; i < count + 1; ++i){
-            System.out.println(twentyDoubles[i]);
-        }
-        if(highDistance > lowDistance){
-            distanceNum = high;
-            System.out.println("The average of your numbers is " + average +
-                    ". \nThe number furthest from the average is " + distanceNum + ", with a distance of " + highDistance);
-        }
-        else{
-            distanceNum = low;
-            System.out.println("The average of your numbers is " + average +
-                    ". \nThe number furthest from the average is " + distanceNum + ", with a distance of " + lowDistance);
-        }
-
-
+        System.out.println("Total count was " + count);
     }
 }
