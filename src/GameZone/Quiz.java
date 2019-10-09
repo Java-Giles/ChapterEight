@@ -12,6 +12,6 @@ public class Quiz {
 
         Scanner input = new Scanner(System.in);
 
-        }
+
     }
 }
